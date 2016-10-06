@@ -1,0 +1,20 @@
+{
+  "name": "utrip",
+  "version": "1.0.0",
+  "description": "Node webpage",
+  "main": "run.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vers",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "cors": "^2.7.1",
+    "express": "^4.13.4",
+    "lodash": "^4.13.1",
+    "mime": "^1.3.4",
+    "mongoose": "^4.4.19",
+    "multer": "^1.1.0"
+  }
+}

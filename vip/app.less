@@ -1,0 +1,93 @@
+@import "bower_components/bootstrap/less/bootstrap.less";
+//@import "bower_components/bootstrap/less/theme.less";
+@import "bower_components/font-awesome/less/font-awesome.less";
+@fa-font-path: "bower_components/font-awesome/fonts";
+
+/* Component LESS */
+@import "partial/sidebar/sidebar.less";
+@import "partial/home/home.less";
+@import "partial/projects/projects.less";
+@import "partial/new-project/new-project.less";
+@import "partial/edit-project/edit-project.less";
+@import "partial/authors/authors.less";
+@import "partial/new-author/new-author.less";
+@import "partial/edit-author/edit-author.less";
+/* Add Component LESS Above */
+
+/* Required for Angular UI Bootstrap */
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+body {
+
+	font-family: 'Open Sans', sans-serif;
+	color: #444;
+
+}
+
+#content {
+
+	margin-left: 240px;
+
+}
+
+.main-view {
+
+	width: 100%;
+	overflow: auto;
+}
+
+.col-md-9, .col-md-12, .col-md-3, .col-md-4 {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.form-control {
+
+	border: 2px solid #e7e7e7;
+	border-radius: 0px;
+	height: 40px;
+	box-shadow: none;
+}
+
+.form-control:focus {
+	border-color: #c7c7c7;
+	outline: 0;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+.drop-zone{
+
+    width: 100%;
+    height: 150px;
+    border: 2px solid #e7e7e7;
+    text-align: center;
+    line-height: 150px;
+
+}
+
+.dragover{
+
+    background-color: #e7e7e7;
+	border-color: #c7c7c7;
+	transition: all 0.3s;
+
+}
+
+.cover {
+    width:100%;
+    max-width:400px;
+	padding:20px;
+}
+
+/* Personal preference for BS modal.  The LESS below makes the backdrop white and
+   causes the modal to fade in rather than slide in. */
+//@modal-backdrop-bg: white;
+//.modal {
+//	&.fade {
+//		.transition(opacity .3s);
+//	}
+//	&.fade .modal-dialog {
+//		.translate(0,0);
+//	}
+//}
