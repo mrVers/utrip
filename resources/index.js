@@ -6,5 +6,7 @@ module.exports = function(){
 	
 	require('./author/model');
     require('./author/routes')();
+	
+	require('./site-routes')();
 
 };
