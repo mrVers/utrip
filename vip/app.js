@@ -7,83 +7,83 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'partial/home/home.html',
         controller: 'HomeCtrl',
         resolve: {
-            projects: function(projectService) {
+            items: function(itemService) {
 
-                return projectService.getList();
+                return itemService.getList();
             },
-			authors: function(authorService) {
+			stores: function(storeService) {
 
-                return authorService.getList();
+                return storeService.getList();
             }
 			
 
         }
     });
-    $stateProvider.state('projects', {
-        url: '/projects',
-        templateUrl: 'partial/projects/projects.html',
-        controller: 'ProjectsCtrl',
+    $stateProvider.state('items', {
+        url: '/items',
+        templateUrl: 'partial/items/items.html',
+        controller: 'ItemsCtrl',
         resolve: {
-            projects: function(projectService) {
+            items: function(itemService) {
 
-                return projectService.getList();
+                return itemService.getList();
             }
         }
 
     });
-    $stateProvider.state('new-project', {
-        url: '/new-project',
-        templateUrl: 'partial/new-project/new-project.html',
-        controller: 'NewProjectCtrl',
+    $stateProvider.state('new-item', {
+        url: '/new-item',
+        templateUrl: 'partial/new-item/new-item.html',
+        controller: 'NewItemCtrl',
         resolve: {
-            authors: function(authorService) {
+            stores: function(storeService) {
 
-                return authorService.getList();
+                return storeService.getList();
             }
         }
     });
-    $stateProvider.state('edit-project', {
-        url: '/edit-project/:id',
-        templateUrl: 'partial/edit-project/edit-project.html',
-        controller: 'EditProjectCtrl',
+    $stateProvider.state('edit-item', {
+        url: '/edit-item/:id',
+        templateUrl: 'partial/edit-item/edit-item.html',
+        controller: 'EditItemCtrl',
         resolve: {
-            project: function(projectService, $stateParams) {
+            item: function(itemService, $stateParams) {
 
-                return projectService.getOne($stateParams.id);
+                return itemService.getOne($stateParams.id);
 
             },
-			authors: function(authorService) {
+			stores: function(storeService) {
 
-                return authorService.getList();
+                return storeService.getList();
             }
 			
 
         }
     });
-    $stateProvider.state('authors', {
-        url: '/authors',
-        templateUrl: 'partial/authors/authors.html',
-		controller: 'AuthorsCtrl',
+    $stateProvider.state('stores', {
+        url: '/stores',
+        templateUrl: 'partial/stores/stores.html',
+		controller: 'StoresCtrl',
         resolve: {
-            authors: function(authorService) {
+            stores: function(storeService) {
 
-                return authorService.getList();
+                return storeService.getList();
             }
         }
     });
-    $stateProvider.state('new-author', {
-        url: '/new-author',
-        templateUrl: 'partial/new-author/new-author.html',
-		controller: 'NewAuthorCtrl'
+    $stateProvider.state('new-store', {
+        url: '/new-store',
+        templateUrl: 'partial/new-store/new-store.html',
+		controller: 'NewStoreCtrl'
     });
-    $stateProvider.state('edit-author', {
-        url: '/edit-author/:id',
-        templateUrl: 'partial/edit-author/edit-author.html',
-		controller: 'EditAuthorCtrl',
+    $stateProvider.state('edit-store', {
+        url: '/edit-store/:id',
+        templateUrl: 'partial/edit-store/edit-store.html',
+		controller: 'EditStoreCtrl',
 		resolve: {
-            project: function(authorService, $stateParams) {
+            item: function(storeService, $stateParams) {
 
-                return authorService.getOne($stateParams.id);
+                return storeService.getOne($stateParams.id);
 
             }
 

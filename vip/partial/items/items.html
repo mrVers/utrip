@@ -1,0 +1,53 @@
+<div class="col-md-12">
+
+    <h1>Items</h1>
+    <div class="new-button" ui-sref="new-item">+ create new</div>
+    <input type="text" class="search-form form-control" placeholder="Search items" ng-model="search">
+    <hr/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Title
+                </th>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Store
+                </th>
+                <th style="text-align:center">
+                    Status
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="fancy" ng-repeat="item in items | filter:search">
+                <td class="title" ui-sref="edit-item({id:item._id})">
+                    <strong>{{item.title}}</strong>
+                </td>
+                <td>
+                    {{item.dateCreated | date:'dd.MM.yyyy @ HH:mm'}}
+                </td>
+                <td>
+                    {{item.store.name}}
+                </td>
+                <td width="70px">
+                    <div class="btn btn-xs btn-default" ng-class="{'btn-success': item.active}" ng-click="setActive(item)">Published</div>
+                </td>
+                <td style="text-align:right">
+                    <div class="new-button" ui-sref="edit-item({id:item._id})">
+                        Edit</div>
+                    /
+                    <div class="new-button" ng-click="deleteClick(item._id)">
+                        Delete</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+	<div class="no-results">
+		<span ng-show="(items | filter:search).length == 0"><strong>No items :(</strong></span>
+	</div>
+
+</div>

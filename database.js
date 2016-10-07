@@ -4,7 +4,7 @@ exports.connect = function (cb) {
 	
 	return new Promise(function(resolve, reject){
 
-		mongoose.connect('mongodb://localhost/node-cms');
+		mongoose.connect('mongodb://localhost/utrip');
 
 		mongoose.connection.on('error', function (err) {
 			console.log('Error: ', err);

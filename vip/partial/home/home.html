@@ -7,18 +7,18 @@
 </div>
 
 <div class="col-md-4 col-md-offset-2">
-	<h4>Latest projects</h4>
+	<h4>Latest items</h4>
 	<hr/>
 
-	<div ng-repeat="project in projects | orderBy:'-' | limitTo: 5">
-		<div class="new-button home" ui-sref="edit-project({id:project._id})">{{project.title}}</div>
+	<div ng-repeat="item in items | orderBy:'-' | limitTo: 5">
+		<div class="new-button home" ui-sref="edit-item({id:item._id})">{{item.title}}</div>
 	</div>
 	<br/>
-	<strong>All projects: {{projects.length}}</strong>
+	<strong>All items: {{items.length}}</strong>
 	<br/>
 </div>
 
 <div class="col-md-4">
-	<h4>Author count: {{authors.length}}</h4>
+	<h4>Store count: {{stores.length}}</h4>
 	<hr/>
 </div>

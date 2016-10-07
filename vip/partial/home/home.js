@@ -1,6 +1,6 @@
-angular.module('app').controller('HomeCtrl',function($scope, projectService, authorService){
+angular.module('app').controller('HomeCtrl',function($scope, itemService, storeService){
 
-	$scope.projects = projectService.model.list;
-	$scope.authors = authorService.model.list;
+	$scope.items = itemService.model.list;
+	$scope.stores = storeService.model.list;
 	
 });

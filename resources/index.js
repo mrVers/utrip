@@ -1,11 +1,11 @@
 
 module.exports = function(){
 
-    require('./project/model');
-    require('./project/routes')();
+    require('./items/model');
+    require('./items/routes')();
 	
-	require('./author/model');
-    require('./author/routes')();
+	require('./store/model');
+    require('./store/routes')();
 	
 	require('./site-routes')();
 

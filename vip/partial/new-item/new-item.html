@@ -1,0 +1,49 @@
+<div class="col-md-9">
+		<h1>New Item</h1>
+	<div class="new-button" ui-sref="items">/ discard</div>
+	<hr/>
+
+</div>
+
+<div class="col-md-9">
+
+	<div ng-form name="myForm">
+		<label>Title*</label>
+	    <input ng-model="item.title" name="title" type="text" class="form-control" ng-minlength="3" ng-class="{'required': submitted && !myForm.title.$valid}" required/>
+	    <br/>
+	    <label>Description*</label>
+	    <textarea ng-model="item.body" name="body" class="form-control" ng-class="{'required': submitted && myForm.body.$error.required}" required></textarea>
+	    <br/>
+		<label>Price*</label>
+	    <input ng-model="item.price" name="price" class="form-control" type="number" ng-class="{'required': submitted && myForm.body.$error.required}" required></input>
+	    <br/>
+		<label>Store</label>
+		<select ng-model="item.store" name="store" ng-options="store.name for store in stores" class="form-control"></select>
+		<br/>
+	    <label>ShortURL</label>
+	    <input ng-model="item.url" name="url" type="url" class="form-control" disabled />
+	    <br/>
+
+		<div class="btn btn-vintage pull-right" ng-click="onSave()" ng-disabled="isSaving">+ save</div>
+	</div>
+	<span><strong>{{requiredFields}}</strong></span>
+	<br/>
+	
+</div>
+<div class="col-md-3">
+	<label>Cover image</label>
+    <br/>
+    <div class="drop-zone" ngf-drop="uploadFiles($file)" ngf-drag-over-class="'dragover'">
+        <div class="btn btn-info" ngf-select="uploadFiles($file)">Upload cover image <br/>or drag & drop</div>
+    </div>
+    <br/>
+    <div class="progress" ng-if="isUploading">
+        <div class="progress-bar progress-bar-striped active" role="progressbar"
+             aria-valuenow="{{uploadData.progress}}" aria-valuemin="0" aria-valuemax="100" style="width:{{uploadData.progress}}%">
+            {{uploadData.progress}}%
+        </div>
+    </div>
+	
+	<img class="cover" ng-if="item.coverImage" ng-src="http://localhost:3333/uploads/{{item.coverImage}}"></img>
+
+</div>

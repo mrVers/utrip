@@ -1,0 +1,50 @@
+<div class="col-md-12">
+    <h1>Stores</h1>
+    <div class="new-button" ui-sref="new-store">+ add new</div>
+	<hr/>
+</div>
+
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Name
+                </th>
+                <th style="text-align:center">
+                    Status
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="fancy" ng-repeat="store in stores">
+                <td class="title" ui-sref="edit-store({id:store._id})">
+                    <strong>{{store.name}}</strong>
+                </td>
+                <td width="70px">
+                    <div class="btn btn-xs btn-default" ng-class="{'btn-success': store.active}" ng-click="setActive(store)">Active</div>
+                </td>
+                <td style="text-align:right">
+                    <div class="new-button" ui-sref="edit-store({id:store._id})">
+                        Edit</div>
+                    /
+                    <div class="new-button" ng-click="deleteClick(store._id)">
+                        Delete</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+<div class="col-md-12">
+	<div class="no-results">
+		<span ng-show="(stores).length == 0">
+			<strong>No stores :( 
+				<br/>Make sure to add one!
+			</strong>
+		</span>
+	</div>
+</div>

@@ -5,19 +5,39 @@ module.exports = function () {
 
 	server.get('/', function (req, res) {
 		
-		const Project = mongoose.model('Project');
+		const Item = mongoose.model('Item');
 		
-        const q = Project.find();
+        const q = Item.find({active: true});
 
-        q.populate('author');
+        q.populate('store');
 
         q.exec()
             .then((docs)=>{
-                res.render('index', {projects:docs});
+                res.render('index', {items:docs});
             })
             .catch((err)=>{
                 res.status(400).send(err);
             });
+
+	});
+	
+	
+	server.get('/store/item/:id', function(req, res){
+
+			const itemId = req.params.id;
+
+			const Item = mongoose.model('Item');
+
+			Item.findById(itemId, function(err, docs){
+
+				if(!err && docs.active){
+					res.render('item', {item:docs});
+				}else{
+					res.status(400).redirect('/');
+					console.log(err);
+				}
+
+			});
 
 	});
 
