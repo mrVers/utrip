@@ -10,7 +10,7 @@ angular.module('app').controller('NewItemCtrl', function ($scope, itemService, s
 
 	$scope.item = {
         store:'',
-        coverImage:null
+		coverImage:''
     };
 	$scope.store = {};
 
@@ -19,6 +19,16 @@ angular.module('app').controller('NewItemCtrl', function ($scope, itemService, s
 	$scope.item.store = $scope.stores[0];
 
 	$scope.onSave = function () {
+		
+		coverImage = $scope.item.coverImage;
+		console.log(coverImage);
+		console.log('yo!');
+		
+		if ( coverImage === "" ) {
+			
+			$scope.item.coverImage = 'default.png';
+			
+		}
 		
 		console.log($scope.item);
 		
@@ -33,9 +43,13 @@ angular.module('app').controller('NewItemCtrl', function ($scope, itemService, s
 
 			itemService.create($scope.item)
 				.then(function (res) {
+				
+				console.log(res);
+				console.log(res.data._id);
+
 
 					//$scope.isSaving = false;
-					$state.go('items');
+					$state.go('edit-item', {'id': res.data._id});
 
 				});
 			

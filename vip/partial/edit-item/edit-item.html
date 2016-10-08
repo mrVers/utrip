@@ -7,7 +7,7 @@
 
 </div>
 
-<div class="col-md-9">
+<div class="col-md-6">
 	
 	<div ng-form name="myForm">
 		<label>Title*</label>
@@ -22,13 +22,20 @@
 		<label>Store</label>
 		<select ng-model="item.store" name="store" ng-options="store.name for store in stores" class="form-control"></select>
 		<br/>
-	    <label>ShortURL</label>
-	    <input ng-model="item.url" name="url" type="url" class="form-control" disabled />
-	    <br/>
 		<div class="btn btn-vintage pull-right" ng-click="onSave()" ng-disabled="isSaving">+ update</div>
 	</div>
 	<span><strong>{{requiredFields}}</strong></span>
 	
+</div>
+
+
+<div class="col-md-3">
+	<label>QR code</label>
+	<img class="cover" ng-if="item.qr" ng-src="http://localhost:3333/qr/{{item.qr}}"></img>
+	<br/>
+	<br/>
+	<label>ShortURL</label> • <a href="http://localhost:3333/{{item.shorturl}}" target="_blank">go</a>
+	<input value="http://localhost:3333/{{item.shorturl}}" name="shorturl" type="text" class="form-control" readonly/>
 </div>
 
 <div class="col-md-3">

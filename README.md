@@ -13,9 +13,10 @@ In main folder:
 
 ```bash
 $ npm install
+$ bower install
 ```
 
-In /vip/ folder:
+As well as in /vip/ folder:
 
 ```bash
 $ npm install
@@ -27,7 +28,7 @@ The project has two parts, the API and the actual APP.
 Make sure you have ``` $ mongod ``` running in background.
 
 #### API
-In main folder run
+In main folder run:
 ```
 $ node run
 ```
@@ -37,11 +38,7 @@ http://localhost:3333/
 ```
 
 #### CMS
-In /vip/ folder run
+Access the Angular.js CMS via the /vip/ route.
 ```
-$ grunt serve
-```
-View the CMS running on port 9001.
-```
-http://localhost:9001/
+http://localhost:3333/vip
 ```

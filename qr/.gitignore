@@ -4,4 +4,3 @@
 
 # ... except for this one.
 !.gitignore
-!default.png

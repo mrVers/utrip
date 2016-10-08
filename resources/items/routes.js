@@ -1,9 +1,10 @@
-const server 	= require('../../server').server;
-const mongoose 	= require('mongoose');
-const multer  	= require('multer');
-const mime 		= require('mime');
-const crypto 	= require ("crypto");
-
+const server 		= require('../../server').server;
+const mongoose 		= require('mongoose');
+const multer  		= require('multer');
+const mime 			= require('mime');
+const crypto 		= require ("crypto");
+const randomstring 	= require("randomstring");
+var qr 				= require('qr-image');
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -49,7 +50,33 @@ module.exports = function () {
 
 	server.post('/item', function(req, res){
 
-		const data = req.body;
+		//generating short url
+		var random = randomstring.generate(3);
+		
+		//generating the qrcode & saving
+		var qrPath = 'http://localhost:3333/'+random;
+		
+		var qrPng = qr.image(qrPath, { 
+			type: 'png',
+			size: 15,
+			margin: 2
+		});
+		
+		qrImg = random+'.png';
+		qrPng.pipe(require('fs').createWriteStream('./qr/'+qrImg));
+		
+		const itemData = req.body;
+		
+		const data = {
+			title 		: req.body.title,
+			body  		: req.body.body,
+			coverImage 	: req.body.coverImage,
+			qr			: qrImg,
+			shorturl	: random,
+			price 		: req.body.price,
+			store		: req.body.store,	
+		};
+		
 		const Item = mongoose.model('Item');
 		const newItem = new Item(data);
 

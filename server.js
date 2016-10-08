@@ -20,6 +20,7 @@ exports.init = function () {
 		server.use('/vip', express.static('vip'));
 		server.use('/libs', express.static('libs'));
 		server.use('/assets', express.static('assets'));
+		server.use('/qr', express.static('qr'));
 
 		server.listen(PORT, function () {
 
