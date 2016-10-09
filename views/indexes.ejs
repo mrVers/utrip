@@ -16,20 +16,31 @@
 			</div>
 			<hr/>
 			<div class="row">
-				
-					<div class="column">
+
+				<% for(var i=0;i<items.length;i++){ %>
+					<div class="one-third column">
 						<div class="simpleCart_shelfItem">
-							<img src="/uploads/<%- item.coverImage %>" class="item_thumb" />
-							<h5 class="item_name"><%- item.title %></h5>
+							<img src="/uploads/<%- items[i].coverImage %>" class="item_thumb" />
+							<a href="/store/item/<%- items[i]._id %>"><h5 class="item_name"><%- items[i].title %></h5></a>
 							<p>
-								<%- item.body %>
+								<%- items[i].body %>
 							</p>
+							<a href="/<%- items[i].shorturl %>">
+								<%- items[i].shorturl %>
+							</a>
+							<select class="item_size">
+								<option value="Small"> Small </option>
+								<option value="Medium"> Medium </option>
+								<option value="Large"> Large </option>
+							</select>
 							<div class="qty">QTY</div>
 							<input type="text" value="1" class="item_Quantity">
-							<span class="item_price"><%- item.price %> €</span>
-							<a class="item_add button u-pull-right" href="#"> Add to Cart </a>
+							<span class="item_price"><%- items[i].price %> €</span>
+							<a class="item_add button u-pull-right" href="javascript:;"> Add to Cart </a>
 						</div>
 					</div>
+					<% } %>
+
 			</div>
 		</div>
 
@@ -72,7 +83,7 @@
 		<!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	</body>
-
+	
 <% include footer.ejs %>
 
 </html>

@@ -20,7 +20,6 @@
 		<label>Store</label>
 		<select ng-model="item.store" name="store" ng-options="store.name for store in stores" class="form-control"></select>
 		<br/>
-
 		<div class="btn btn-vintage pull-right" ng-click="onSave()" ng-disabled="isSaving">+ save</div>
 	</div>
 	<span><strong>{{requiredFields}}</strong></span>

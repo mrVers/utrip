@@ -2,88 +2,51 @@
 <html lang="sl_SI">
 <% include header.ejs %>
 
-	<body>
+	<link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&subset=latin-ext" rel="stylesheet">
+
+	<body class="main">
 
 		<!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-		<div class="container">
-
-			<div class="row" style="margin-top: 20px;">
-				<div class="brand">
-					<a href="/"><h5><i class="fa fa-shopping-cart"></i> utripStore :)</h5></a>
-				</div>
-				<a class="button button-primary u-pull-right"><i class="fa fa-shopping-cart"></i> Cart <span class="simpleCart_total"></span></a>
-			</div>
-			<hr/>
-			<div class="row">
-
-				<% for(var i=0;i<items.length;i++){ %>
-					<div class="one-third column">
-						<div class="simpleCart_shelfItem">
-							<img src="/uploads/<%- items[i].coverImage %>" class="item_thumb" />
-							<a href="/store/item/<%- items[i]._id %>"><h5 class="item_name"><%- items[i].title %></h5></a>
-							<p>
-								<%- items[i].body %>
-							</p>
-							<a href="/<%- items[i].shorturl %>">
-								<%- items[i].shorturl %>
-							</a>
-							<select class="item_size">
-								<option value="Small"> Small </option>
-								<option value="Medium"> Medium </option>
-								<option value="Large"> Large </option>
-							</select>
-							<div class="qty">QTY</div>
-							<input type="text" value="1" class="item_Quantity">
-							<span class="item_price"><%- items[i].price %> €</span>
-							<a class="item_add button u-pull-right" href="javascript:;"> Add to Cart </a>
-						</div>
+		<div class="section hero">
+			<div class="logo"><img src="assets/images/logo.png" class="u-max-full-width" alt="Logo"></div>
+			<div class="container">
+				<div class="row">
+					<div class="one-half column">
+						<h4 class="hero-heading">Zavod utrip predstavlja:</h4>
 					</div>
-					<% } %>
-
+					<div class="one-half column">
+						<figure class="push-left">
+							<figcaption>
+								<h1 class="heading">"Dihi"</h1>
+							</figcaption>
+							<img src="assets/images/dihi.jpg" class="u-max-full-width" alt="Dihi">
+							
+						</figure>
+					</div>
+					<a class="button button-primary button-hero" href="#">Naročila</a>
+				</div>
 			</div>
 		</div>
 
-		<!-- Cart
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-		<div class="hidden">
-			<div id="cart">
-				<h2>Cart</h2>
-				<div class="row">
+		<div class="section categories">
+			<div class="container">
+				<p class="section-description">Dihi, naša majhna blazina, je vaš dnevni sopotnik skozi razgibalne aktivnosti ali trenutke ko si želite vzeti čas zase. Dihi je ročno izdelan iz 100 % reciklirani materialov ter prijazen do okolja.</p>
+			</div>
+		</div>
 
-					<div class="eight columns">
-						<div class="simpleCart_items"></div>
-					</div>
-
-					<div class="four columns">
-						<div class="cart_info">
-							<div class="cart_info_item cart_itemcount">Items:
-								<div class="simpleCart_quantity"></div>
-							</div>
-							<div class="cart_info_item cart_taxrate">Tax Rate:
-								<div class="simpleCart_taxRate"></div>
-							</div>
-							<div class="cart_info_item cart_tax">Tax:
-								<div class="simpleCart_tax"></div>
-							</div>
-							<div class="cart_info_item cart_shipping">Shipping:
-								<div class="simpleCart_shipping"></div>
-							</div>
-							<div class="cart_info_item cart_total"><b>Total: <div class="simpleCart_grandTotal"></div></b></div>
-						</div>
-					</div>
-
-					<a href="javascript:;" class="simpleCart_empty button u-pull-left">Empty Cart <i class="fa fa-trash-o"></i></a>
-					<a href="javascript:;" class="button button-primary simpleCart_checkout u-pull-right">Checkout <i class="fa fa-arrow-right"></i></a>
-
-				</div>
+		<div class="section get-help">
+			<div class="container">
+				<h3 class="section-heading">Kje si lahko ogledam Dihija v živo?</h3>
+				<p class="section-description">Blazinico Dihi si bo moč ogledati in preizkusiti v živo po številnih lokacijah po Sloveniji in tujini, naročiti pa preko te strani. Povprašaj prodajalca za unikatno kodo, preko katere boš dostopil v našo spletno trgovino, ali pa uporabi kar našo :)</p>
+				<a class="button button-primary" href="/xMJ">Vstopi v spletno trgovino</a>
 			</div>
 		</div>
 
 		<!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 	</body>
-	
-<% include footer.ejs %>
+
+	<% include footer.ejs %>
 
 </html>
