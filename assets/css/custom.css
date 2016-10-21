@@ -30,7 +30,7 @@ body.main {
 }
 
 .item_thumb {
-	height: 150px;
+	width: 100%;
 	display: block;
 	margin: 0 auto;
 	padding-bottom: 10px
@@ -43,15 +43,15 @@ body.main {
 }
 
 .item_Quantity {
-	display: block;
-	width: 50px
+	display: inline-block;
+	width: 60px
 }
 
-.qty {
-	display: block;
-	float: left;
-	line-height: 40px;
-	margin-right: 10px
+.qty label {
+    display: block;
+    float: left;
+    line-height: 40px;
+    margin-right: 10px;
 }
 
 .item_name {
@@ -62,7 +62,18 @@ body.main {
 .item_price {
 	font-weight: 700;
 	font-size: 20px;
-	line-height: 35px
+	line-height: 35px;
+	display: block;
+    margin-bottom: 1.5rem;
+}
+
+.simpleCart_shelfItem .item_add {
+    display: block;
+    position: inherit;
+}
+
+.simpleCart_shelfItem .item_add {
+    margin: 0;
 }
 
 .simpleCart_shelfItem p {
@@ -351,6 +362,13 @@ h1.heading {
 	margin-top: -16px;
 }
 
+}
+
+@media (max-width: 620px) {
+
+    .simpleCart_shelfItem .item_add {
+        width: 100%;
+    }
 }
 
 
