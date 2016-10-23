@@ -15,7 +15,7 @@
 	    <textarea ng-model="item.body" name="body" class="form-control" ng-class="{'required': submitted && myForm.body.$error.required}" required></textarea>
 	    <br/>
 		<label>Price*</label>
-	    <input ng-model="item.price" name="price" class="form-control" type="number" ng-class="{'required': submitted && myForm.body.$error.required}" required></input>
+	    <input ng-model="item.price" name="price" class="form-control" type="number" step="0.01" ng-class="{'required': submitted && myForm.body.$error.required}" required></input>
 	    <br/>
 		<label>Store</label>
 		<select ng-model="item.store" name="store" ng-options="store.name for store in stores" class="form-control"></select>

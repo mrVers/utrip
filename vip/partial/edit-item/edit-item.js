@@ -2,21 +2,21 @@ angular.module('app').controller('EditItemCtrl', function ($scope, itemService, 
 
 	$scope.item = itemService.model.item;
 	$scope.stores = storeService.model.list;
-	
+
 	$scope.isSaving = false;
 	$scope.submitted = false;
 	$scope.requiredFields = "";
 	$scope.isUploading = false;
-    $scope.uploadData = {
+	$scope.uploadData = {
 		progress: 0
-    };
-	
+	};
+
 	var storeId = $scope.item.store;
 
 	function matchStoreId() {
-		
+
 		for (var i = 0; i < $scope.stores.length; i++) {
-			
+
 			var myStore = $scope.stores[i];
 
 			console.log(myStore);
@@ -46,8 +46,8 @@ angular.module('app').controller('EditItemCtrl', function ($scope, itemService, 
 			$scope.isSaving = true;
 			console.log('saved');
 
-				itemService.update($scope.item._id, $scope.item)
-					.then(function (res) {
+			itemService.update($scope.item._id, $scope.item)
+				.then(function (res) {
 
 					$state.go('items');
 
@@ -59,14 +59,14 @@ angular.module('app').controller('EditItemCtrl', function ($scope, itemService, 
 		}
 
 	};
-	
+
 	$scope.uploadFiles = function (file) {
 
 		$scope.isUploading = true;
 
 		Upload.upload({
-			url: 'http://localhost:3333/upload',
-			data: {
+			url: 'http://localhost:3333/upload'
+			, data: {
 				file: file
 			}
 		}).then(function (resp) {

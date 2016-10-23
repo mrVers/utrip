@@ -3,7 +3,14 @@ const mongoose = require('mongoose');
 
 module.exports = function () {
 
+
 	server.get('/', function (req, res) {
+
+		res.render('index');
+
+	});
+
+	server.get('/app', function (req, res) {
 
 		const Item = mongoose.model('Item');
 
@@ -15,7 +22,7 @@ module.exports = function () {
 
 		q.exec()
 			.then((docs) => {
-				res.render('index', {
+				res.render('items', {
 					items: docs
 				});
 			})
@@ -33,7 +40,7 @@ module.exports = function () {
 
 		Item.findById(itemId, function (err, docs) {
 
-			if (!err && docs.active) {
+			if (!err && docs && docs.active) {
 				res.render('item', {
 					item: docs
 				});
@@ -53,7 +60,9 @@ module.exports = function () {
 
 		const Item = mongoose.model('Item');
 
-		Item.findOne({ shorturl: itemId }, function (err, docs) {
+		Item.findOne({
+			shorturl: itemId
+		}, function (err, docs) {
 			console.log(docs);
 			if (err) {
 				res.status(400).send(err);

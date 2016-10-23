@@ -29,20 +29,20 @@ body.main {
 	overflow: hidden;
 }
 
-.item_thumb {
+.item-thumb {
 	width: 100%;
 	display: block;
 	margin: 0 auto;
 	padding-bottom: 10px
 }
 
-.item_size {
+.item-size {
 	display: block;
 	float: left;
 	margin-right: 10px
 }
 
-.item_Quantity {
+.item-quantity {
 	display: inline-block;
 	width: 60px
 }
@@ -54,12 +54,12 @@ body.main {
     margin-right: 10px;
 }
 
-.item_name {
+.item-title {
 	font-weight: 600;
 	text-align: center;
 }
 
-.item_price {
+.item-price {
 	font-weight: 700;
 	font-size: 20px;
 	line-height: 35px;
@@ -67,13 +67,10 @@ body.main {
     margin-bottom: 1.5rem;
 }
 
-.simpleCart_shelfItem .item_add {
+.simpleCart_shelfItem .item-add {
     display: block;
     position: inherit;
-}
-
-.simpleCart_shelfItem .item_add {
-    margin: 0;
+	margin: 0;
 }
 
 .simpleCart_shelfItem p {
