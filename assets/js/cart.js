@@ -5,7 +5,13 @@ var cart = [];
 var cartArray = [];
 
 $('.item-add').on('click', function () {
-	//$(document).on("click", '.item-add', function (event) {
+
+	$('.notify').fadeIn(200, function () {
+		setTimeout(function () {
+			$('.notify').fadeOut(300);
+		}, 1000);
+	});
+
 	var qty = parseFloat($('.item-quantity').val());
 
 	//check if localStorage is not present
@@ -69,7 +75,7 @@ function pushItem() {
 			var subTotal = (item.price * addItem.quantity).toFixed(2);
 
 			//rendering the new row
-			$(".headerRow").after('<div class="itemRow" value="' + item._id + '"><div class="item-cart-name">' + item.title + '</div><div class="item-cart-price">' + item.price + '€</div><div class="item-cart-quantity">' + addItem.quantity + '</div><div class="item-cart-total">' + subTotal + '€</div><div class="item-cart-remove"><a class="simpleCart_remove" >Remove</a></div></div>');
+			$(".headerRow").after('<div class="itemRow" value="' + item._id + '"><div class="item-cart-name">' + item.title + '</div><div class="item-cart-price">' + item.price + '€</div><div class="item-cart-quantity">' + addItem.quantity + '</div><div class="item-cart-total">' + subTotal + '€</div><div class="item-cart-remove"><a class="simpleCart_remove" >x</a></div></div>');
 		}
 		, async: false
 	});
@@ -150,7 +156,7 @@ function populateRows() {
 		var item = array[i];
 		var subTotal = (array.price * array.quantity).toFixed(2);
 
-		$(".headerRow").after('<div class="itemRow" value="' + array._id + '"><div class="item-cart-name">' + array.title + '</div><div class="item-cart-price">' + array.price + '€</div><div class="item-cart-quantity">' + array.quantity + '</div><div class="item-cart-total">' + subTotal + '€</div><div class="item-cart-remove"><a class="simpleCart_remove" value="' + array._id + '">Remove</a></div></div>');
+		$(".headerRow").after('<div class="itemRow" value="' + array._id + '"><div class="item-cart-name">' + array.title + '</div><div class="item-cart-price">' + array.price + '€</div><div class="item-cart-quantity">' + array.quantity + '</div><div class="item-cart-total">' + subTotal + '€</div><div class="item-cart-remove"><a class="simpleCart_remove" value="' + array._id + '"><i class="fa fa-times"></i></a></div></div>');
 	});
 }
 

@@ -1,3 +1,17 @@
+$('.cart-button').on('click', function () {
+	
+	$('.shelf-item').fadeOut(200);
+	$('#cart').delay(200).fadeIn(200);
+
+});
+
+$('.close').on('click', function () {
+	
+	$('.shelf-item').delay(200).fadeIn(200);
+	$('#cart').fadeOut(200);
+
+});
+
 $('.form-container').hide();
 
 $('.cta-button').on('click', function () {

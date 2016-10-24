@@ -10,11 +10,11 @@
 
 			<div class="row" style="margin-top:20px;">
 				<div class="brand">
-					<a href="/"><h5><i class="fa fa-shopping-cart"></i> utripStore :)</h5></a>
+					<a href="/"><h5>utripStore</h5></a>
 				</div>
-				<a class="button button-primary u-pull-right"><i class="fa fa-shopping-cart"></i> Cart <span class="simpleCart_total"></span></a>
+				<a class="button button-primary u-pull-right cart-button"><i class="fa fa-shopping-cart"></i> Cart <span class="simpleCart_total"></span></a>
 			</div>
-			<div class="row">
+			<div class="row shelf-item">
 				<div class="column">
 					<div class="simpleCart_shelfItem">
 						<div class="four columns">
@@ -39,9 +39,9 @@
 
 			<!-- Cart
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-			<div>
-				<div id="cart">
+				<div id="cart" class="hidden">
 					<h2>Cart</h2>
+					<a class="close">×</a>
 					<div class="row">
 
 						<div class="eight columns">
@@ -117,12 +117,15 @@
 							</div>
 						</div>
 
-						<a class="simpleCart_empty button u-pull-left">Empty Cart <i class="fa fa-trash-o"></i></a>
+						<a class="simpleCart_empty u-pull-left">Empty Cart <i class="fa fa-trash-o"></i></a>
 						<a href="javascript:;" class="button button-primary simpleCart_checkout u-pull-right">Checkout <i class="fa fa-arrow-right"></i></a>
 
 					</div>
 				</div>
-			</div>
+		</div>
+		<div class="notify hidden">
+            <p class="notify_text">Item added to cart</p>
+		</div>
 
 			<!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
