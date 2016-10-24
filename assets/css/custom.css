@@ -363,7 +363,7 @@ h1.heading {
 
 @media (max-width: 620px) {
 
-    .simpleCart_shelfItem .item_add {
+    .simpleCart_shelfItem .item-add {
         width: 100%;
     }
 }
