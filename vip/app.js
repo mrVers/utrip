@@ -89,6 +89,30 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
 
         }
     });
+    $stateProvider.state('orders', {
+        url: '/orders',
+        templateUrl: 'partial/orders/orders.html',
+		controller: 'OrdersCtrl',
+        resolve: {
+            orders: function(orderService) {
+
+                return orderService.getList();
+            }
+        }
+    });
+    $stateProvider.state('edit-order', {
+        url: '/edit-order/:id',
+        templateUrl: 'partial/edit-order/edit-order.html',
+		controller: 'EditOrderCtrl',
+		resolve: {
+            item: function(orderService, $stateParams) {
+
+                return orderService.getOne($stateParams.id);
+
+            }
+
+        }
+    });
     /* Add New States Above */
     $urlRouterProvider.otherwise('/home');
 

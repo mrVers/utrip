@@ -1,0 +1,56 @@
+<div class="col-md-12">
+    <h1>Orders</h1>
+    <div class="new-button" ui-sref="new-order">+ add new</div>
+	<hr/>
+</div>
+
+<div class="col-md-12">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Id
+                </th>
+				<th>
+                    Date
+                </th>
+                <th style="text-align:center">
+                    Status
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="fancy" ng-repeat="order in orders | orderBy:'-'">
+                <td class="title" ui-sref="edit-order({id:order._id})">
+                    <strong>{{order._id}} </strong> <div class="btn btn-xs btn-success">New</div>
+                </td>
+				<td>
+                    {{order.dateCreated | date:'dd.MM.yyyy @ HH:mm'}}
+                </td>
+                <td width="70px">
+                    <div class="btn btn-xs btn-default">Pending</div>
+                </td>
+                <td style="text-align:right">
+                    <div class="new-button" ui-sref="edit-order({id:order._id})">
+                        Edit</div>
+                    /
+                    <div class="new-button" ng-click="deleteClick(order._id)">
+                        Delete</div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+<div class="col-md-12">
+	<div class="no-results">
+		<span ng-show="(orders).length == 0">
+			<strong>No sales present :( 
+				<br/>We shall now cross our fingers and wait for the first one!
+			</strong>
+		</span>
+	</div>
+</div>

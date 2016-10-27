@@ -1,0 +1,83 @@
+<div class="col-md-9">
+	<h1>Order #{{order._id}}</h1>
+	<div class="new-button" ui-sref="orders">/ back</div>
+	<hr/>
+
+</div>
+
+<div class="col-md-6" class="">
+
+	<div ng-form name="myForm" class="form">
+		<div class="col-md-6">
+			<label>Name*</label>
+			<input ng-model="order.name" name="name" type="text" class="form-control" readonly/>
+			<br/>
+		</div>
+		<div class="col-md-6">
+			<label>Last name*</label>
+			<input ng-model="order.surname" name="surname" type="text" class="form-control" readonly/>
+			<br/>
+		</div>
+		<div class="col-md-12">
+			<label>Address*</label>
+			<input ng-model="order.address" name="address" type="text" class="form-control" readonly/>
+			<br/>
+		</div>
+		<div class="col-md-6">
+			<label>Postal code*</label>
+			<input ng-model="order.zip" name="zip" type="text" class="form-control" readonly/>
+			<br/>
+		</div>
+		<div class="col-md-6">
+			<label>City*</label>
+			<input ng-model="order.city" name="city" type="text" class="form-control" readonly/>
+			<br/>
+		</div>
+		<div class="col-md-12">
+			<label>Email*</label>
+			<input ng-model="order.email" name="email" type="text" class="form-control" readonly/>
+			<br/>
+		</div>
+		<div class="col-md-12">
+			<label>Comment*</label>
+			<textarea ng-model="order.comment" name="comment" class="form-control" readonly/></textarea>
+			<br/>
+		</div>
+		<br/>
+		<div class="btn btn-vintage pull-right" ng-click="" ng-disabled="isSaving">+ update</div>
+	</div>
+	<span><strong>{{requiredFields}}</strong></span>
+
+</div>
+
+
+<div class="col-md-6 orders">
+	<div class="order-header">Ordered items</div>
+	<div ng-repeat="item in order.items" class="order-item col-md-12">
+		<div class="col-md-4">
+			<img class="cover" ng-if="item.coverImage" ng-src="http://localhost:3333/uploads/{{item.coverImage}}"></img>
+
+		</div>
+		<div class="col-md-8">
+			<label>{{item.title}}</label>
+			<br/>
+			<div>{{item.body}}</div>
+			<br/>
+			<div class="col-md-6">
+				<label>Price</label>
+				<input ng-model="item.price" name="shorturl" type="text" class="form-control" readonly/>
+			</div>
+			<div class="col-md-6">
+				<label>Qty</label>
+				<input ng-model="item.quantity" name="shorturl" type="text" class="form-control" readonly/>
+			</div>
+		</div>
+		<hr>
+	</div>
+	</br>
+	<div class="order-header">Total</div>
+	</br>
+	<div><strong>Tax: </strong>Tax amount</div>
+	<div><strong>Shipping: </strong>Free</div>
+	<div><strong>TOTAL: </strong>Total amount</div>
+</div>

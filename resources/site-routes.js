@@ -9,6 +9,12 @@ module.exports = function () {
 		res.render('index');
 
 	});
+	
+	server.get('/checkout', function (req, res) {
+
+		res.render('checkout');
+
+	});
 
 	server.get('/app', function (req, res) {
 
@@ -74,6 +80,27 @@ module.exports = function () {
 			} else {
 				res.status(404).redirect('/');
 				console.log('redirect');
+			}
+
+		});
+
+	});
+	
+	server.get('/store/order/:id', function (req, res) {
+
+		const itemId = req.params.id;
+
+		const Order = mongoose.model('Order');
+
+		Order.findById(itemId, function (err, docs) {
+
+			if (!err && docs) {
+				res.render('completed', {
+					item: docs
+				});
+			} else {
+				res.status(400).redirect('/');
+				console.log(err);
 			}
 
 		});

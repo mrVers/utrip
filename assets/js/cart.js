@@ -75,7 +75,7 @@ function pushItem() {
 			var subTotal = (item.price * addItem.quantity).toFixed(2);
 
 			//rendering the new row
-			$(".headerRow").after('<div class="itemRow" value="' + item._id + '"><div class="item-cart-name">' + item.title + '</div><div class="item-cart-price">' + item.price + '€</div><div class="item-cart-quantity">' + addItem.quantity + '</div><div class="item-cart-total">' + subTotal + '€</div><div class="item-cart-remove"><a class="simpleCart_remove" >x</a></div></div>');
+			$(".headerRow").after('<div class="itemRow" value="' + item._id + '"><div class="item-cart-name">' + item.title + '</div><div class="item-cart-price">' + item.price + '€</div><div class="item-cart-quantity">' + addItem.quantity + '</div><div class="item-cart-total">' + subTotal + '€</div><div class="item-cart-remove"><a class="simpleCart_remove" ><i class="fa fa-times"></i></a></div></div>');
 		}
 		, async: false
 	});

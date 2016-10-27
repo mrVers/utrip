@@ -225,6 +225,15 @@ a.close:hover {
 	text-align: center;
 }
 
+.summary {
+	text-align: center;
+	background: #eee;
+	padding: 10px;
+}
+
+.checkout input, .checkout textarea {
+	width: 100%;
+}
 
 /* site index
 	HELLO PAGE
@@ -419,6 +428,9 @@ h1.heading {
 	margin: 0 auto;
 }
 
+
+
+
 /* Bigger than 550 */
 
 @media (min-width: 550px) {
@@ -442,6 +454,9 @@ h1.heading {
 @media (max-width: 620px) {
 
     .simpleCart_shelfItem .item-add {
+        width: 100%;
+    }
+    .checkout .submit-button{
         width: 100%;
     }
 }
