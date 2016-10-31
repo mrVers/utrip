@@ -11,31 +11,6 @@ angular.module('app').controller('EditItemCtrl', function ($scope, itemService, 
 		progress: 0
 	};
 
-	var storeId = $scope.item.store;
-
-	function matchStoreId() {
-
-		for (var i = 0; i < $scope.stores.length; i++) {
-
-			var myStore = $scope.stores[i];
-
-			console.log(myStore);
-
-			if (myStore._id === storeId) {
-
-				console.log('match!');
-				$scope.item.store = $scope.stores[i];
-
-			} else {
-				console.log('no match :(');
-
-			}
-
-		}
-	}
-
-	matchStoreId();
-
 	$scope.onSave = function () {
 		console.log(storeId);
 

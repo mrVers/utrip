@@ -2,17 +2,17 @@ const mongoose = require('mongoose');
 
 const Schema = new mongoose.Schema({
 
-	name		: String,
-	surname		: String,
-	address		: String,
-	zip			: String,
-	city		: String,
-	email		: String,
+	name		: {type:String, required:true},
+	surname		: {type:String, required:true},
+	address		: {type:String, required:true},
+	zip			: {type:String, required:true},
+	city		: {type:String, required:true},
+	email		: {type:String, required:true},
 	comment		: String,
 	dateCreated	: {type:Date, default:Date.now},
-	items 		: [],
+	items 		: {type:Array, required:true},
 	total		: Number,
-	status 		: String
+	status 		: {type:String, default:'Pending'}
 
 });
 

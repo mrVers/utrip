@@ -18,7 +18,7 @@
 	    <input ng-model="item.price" name="price" class="form-control" type="number" step="0.01" ng-class="{'required': submitted && myForm.body.$error.required}" required></input>
 	    <br/>
 		<label>Store</label>
-		<select ng-model="item.store" name="store" ng-options="store.name for store in stores" class="form-control"></select>
+		<select ng-model="item.store" name="store" ng-options="store._id as store.name for store in stores" class="form-control"></select>
 		<br/>
 		<div class="btn btn-vintage pull-right" ng-click="onSave()" ng-disabled="isSaving">+ update</div>
 	</div>

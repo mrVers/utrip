@@ -1,6 +1,7 @@
 <div class="col-md-12">
     <h1>Orders</h1>
-    <div class="new-button" ui-sref="new-order">+ add new</div>
+    <div class="new-button">The more, the merrier</div>
+	<input type="text" class="search-form form-control" placeholder="Search orders" ng-model="search">
 	<hr/>
 </div>
 
@@ -9,7 +10,7 @@
         <thead>
             <tr>
                 <th>
-                    Id
+                    Order #id
                 </th>
 				<th>
                     Date
@@ -29,7 +30,7 @@
                     {{order.dateCreated | date:'dd.MM.yyyy @ HH:mm'}}
                 </td>
                 <td width="70px">
-                    <div class="btn btn-xs btn-default">Pending</div>
+                    <div class="btn btn-xs btn-default" ng-class="{'btn-success': order.status === 'Shipped'}">{{order.status}}</div>
                 </td>
                 <td style="text-align:right">
                     <div class="new-button" ui-sref="edit-order({id:order._id})">

@@ -1,4 +1,4 @@
-<div class="col-md-9">
+<div class="col-md-12">
 	<h1>Order #{{order._id}}</h1>
 	<div class="new-button" ui-sref="orders">/ back</div>
 	<hr/>
@@ -39,45 +39,58 @@
 			<br/>
 		</div>
 		<div class="col-md-12">
-			<label>Comment*</label>
+			<label>Comment</label>
 			<textarea ng-model="order.comment" name="comment" class="form-control" readonly/></textarea>
 			<br/>
 		</div>
-		<br/>
-		<div class="btn btn-vintage pull-right" ng-click="" ng-disabled="isSaving">+ update</div>
+		<div class="col-md-12">
+			<label>Status</label>
+			<select ng-model="order.status" name="status" ng-options="status.name as status.name for status in statuses" class="form-control"></select>
+			<br/>
+		</div>
+		<div class="btn btn-vintage pull-right" ng-click="onSave()" ng-disabled="isSaving">+ update</div>
 	</div>
-	<span><strong>{{requiredFields}}</strong></span>
 
 </div>
 
 
 <div class="col-md-6 orders">
-	<div class="order-header">Ordered items</div>
-	<div ng-repeat="item in order.items" class="order-item col-md-12">
-		<div class="col-md-4">
-			<img class="cover" ng-if="item.coverImage" ng-src="http://localhost:3333/uploads/{{item.coverImage}}"></img>
+	<div class="clearfix ordered-items">
+		<div class="order-header">Ordered items</div>
+		<div ng-repeat="item in order.items" class="order-item col-md-12">
+			<div class="col-md-4">
+				<img class="cover" ng-if="item.coverImage" ng-src="http://localhost:3333/uploads/{{item.coverImage}}"></img>
 
-		</div>
-		<div class="col-md-8">
-			<label>{{item.title}}</label>
-			<br/>
-			<div>{{item.body}}</div>
-			<br/>
-			<div class="col-md-6">
-				<label>Price</label>
-				<input ng-model="item.price" name="shorturl" type="text" class="form-control" readonly/>
 			</div>
-			<div class="col-md-6">
-				<label>Qty</label>
-				<input ng-model="item.quantity" name="shorturl" type="text" class="form-control" readonly/>
+			<div class="col-md-8">
+				<label>{{item.title}}</label>
+				<br/>
+				<div>{{item.body}}</div>
+				<br/>
+				<div class="col-md-4">
+					<label>Price</label>
+					<input ng-model="item.price" name="item.price" type="text" class="form-control" readonly/>
+				</div>
+				<div class="col-md-2">
+					<label>Qty</label>
+					<input ng-model="item.quantity" name="item.quantity" type="text" class="form-control" readonly/>
+				</div>
+				<div class="col-md-offset-2 col-md-4">
+					<label>Sub total</label>
+					<input ng-init="itemTotal = item.price * item.quantity; $parent.cartTotal = $parent.cartTotal + itemTotal;" value="{{itemTotal}}" name="item.subtotal" type="text" class="form-control" readonly/>
+				</div>
 			</div>
+			<hr>
 		</div>
-		<hr>
 	</div>
-	</br>
-	<div class="order-header">Total</div>
-	</br>
-	<div><strong>Tax: </strong>Tax amount</div>
-	<div><strong>Shipping: </strong>Free</div>
-	<div><strong>TOTAL: </strong>Total amount</div>
+	<div class="clearfix ordered-totals">
+		<div class="order-header">Total</div>
+		</br>
+		<p><strong>Tax: </strong>22 %</p>
+		<p><strong>Shipping: </strong>Free</p>
+		<div class="col-md-6">
+			<label>Total</label>
+			<input value="{{cartTotal}}" ng-model="cartTotal" name="cart-total" type="text" class="form-control" readonly/>
+		</div>
+	</div>
 </div>

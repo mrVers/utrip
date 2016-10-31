@@ -1,28 +1,28 @@
-angular.module('app').controller('ItemsCtrl', function($scope, itemService) {
+angular.module('app').controller('ItemsCtrl', function ($scope, itemService) {
 
-    $scope.items     = itemService.model.list;
+	$scope.items = itemService.model.list;
 
-    $scope.deleteClick = function(id) {
+	$scope.deleteClick = function (id) {
 
-        itemService.delete(id)
-            .then(function() {
+		itemService.delete(id)
+			.then(function () {
 
 
-            });
-    };
+			});
+	};
 
-    $scope.setActive = function(item) {
+	$scope.setActive = function (item) {
 
-        var id = item._id;
+		var id = item._id;
 
-        if (item.active) {
-            item.active = false;
-        } else {
-            item.active = true;
-        }
+		if (item.active) {
+			item.active = false;
+		} else {
+			item.active = true;
+		}
 
-        itemService.update(id, item);
+		itemService.update(id, item);
 
-    };
+	};
 
 });

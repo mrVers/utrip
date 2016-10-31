@@ -7,6 +7,7 @@ var cartArray = [];
 $('.item-add').on('click', function () {
 
 	$('.notify').fadeIn(200, function () {
+		$('.notify .notify-text').text('Item added to cart');
 		setTimeout(function () {
 			$('.notify').fadeOut(300);
 		}, 1000);
@@ -102,7 +103,12 @@ $(document).on("click", '.simpleCart_remove', function (event) {
 			break;
 		}
 	}
-	localStorage.setItem("cart", JSON.stringify(cart));
+	
+	if(cart.length > 0){  
+		localStorage.setItem("cart", JSON.stringify(cart));
+	}else{
+		localStorage.clear('cart');
+	}	 
 	recalculate();
 });
 
@@ -110,8 +116,6 @@ $(document).on("click", '.simpleCart_remove', function (event) {
 if (localStorage.getItem('cart')) {
 	cart = JSON.parse(localStorage.getItem("cart"));
 	populateStorage();
-} else {
-
 }
 
 // populate the cartArray and adding the rows

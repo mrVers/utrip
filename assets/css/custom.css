@@ -235,6 +235,10 @@ a.close:hover {
 	width: 100%;
 }
 
+.checkout .item-cart-remove {
+	display: none;
+}
+
 /* site index
 	HELLO PAGE
 */
