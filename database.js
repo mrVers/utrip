@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Promise = require('bluebird');
 
 exports.connect = function (cb) {
 	
@@ -13,7 +14,7 @@ exports.connect = function (cb) {
 
 		mongoose.connection.once('open', function () {
 
-			console.log('Connection established');
+			console.log('Database ready');
 			resolve();
 
 		});

@@ -1,4 +1,4 @@
-angular.module('app').controller('NewItemCtrl', function ($scope, itemService, storeService, $state, Upload, $timeout) {
+angular.module('app').controller('NewItemCtrl', function ($scope, itemService, storeService, $state, Upload, $timeout, NET) {
 
 	$scope.isSaving = false;
 	$scope.submitted = false;
@@ -7,6 +7,8 @@ angular.module('app').controller('NewItemCtrl', function ($scope, itemService, s
     $scope.uploadData = {
 		progress: 0
     };
+	
+	$scope.url = NET.API_URL;
 
 	$scope.item = {
         store:'',
@@ -65,7 +67,7 @@ angular.module('app').controller('NewItemCtrl', function ($scope, itemService, s
 		$scope.isUploading = true;
 
 		Upload.upload({
-			url: 'http://localhost:3333/upload',
+			url: NET.API_URL + '/api/upload',
 			data: {
 				file: file
 			}

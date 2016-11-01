@@ -1,4 +1,4 @@
-angular.module('app').factory('storeService',function($http) {
+angular.module('app').factory('storeService',function($http, NET) {
 
  var storeService = {
 
@@ -9,7 +9,7 @@ angular.module('app').factory('storeService',function($http) {
 
         create: function(data) {
 
-            var promise = $http.post('http://localhost:3333/store', data);
+            var promise = $http.post(NET.API_URL + '/api/store', data);
 
             return promise;
 
@@ -17,7 +17,7 @@ angular.module('app').factory('storeService',function($http) {
 
         getOne: function(id) {
 
-            var promise = $http.get('http://localhost:3333/store/'+id);
+            var promise = $http.get(NET.API_URL + '/api/store/'+id);
 
             promise.then(function(res) {
 
@@ -33,7 +33,7 @@ angular.module('app').factory('storeService',function($http) {
 
         getList: function() {
 
-            var promise = $http.get('http://localhost:3333/stores');
+            var promise = $http.get(NET.API_URL + '/api/stores');
 
             promise.then(function(res) {
 
@@ -54,7 +54,7 @@ angular.module('app').factory('storeService',function($http) {
             }
 
 
-            var promise = $http.delete('http://localhost:3333/store/' + id);
+            var promise = $http.delete(NET.API_URL + '/api/store/' + id);
 
             promise.then(function(res) {
 
@@ -75,7 +75,7 @@ angular.module('app').factory('storeService',function($http) {
         },
         update: function(id, data) {
 
-          var promise = $http.put('http://localhost:3333/store/'+id, data);
+          var promise = $http.put(NET.API_URL + '/api/store/'+id, data);
 
           promise.then(function(res){
 

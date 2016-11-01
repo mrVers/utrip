@@ -25,6 +25,9 @@
 	<script src="bower_components/angular-resource/angular-resource.js"></script>
 	<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 	<script src="bower_components/ng-file-upload/ng-file-upload-all.min.js"></script>
+	<script src="bower_components/localforage/dist/localforage.min.js"></script>
+	<script src="bower_components/localforage-sessionstoragewrapper/src/localforage-sessionstoragewrapper.js"></script>
+	<script src="bower_components/angular-localforage/dist/angular-localForage.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,300,600" rel="stylesheet" type="text/css">
 	<link href="assets/favicon.png" rel="shortcut icon" type="image/png">
 	<!-- Add New Bower Component JS Above -->
@@ -46,10 +49,14 @@
 	<script src="service/order-service.js"></script>
 	<script src="partial/orders/orders.js"></script>
 	<script src="partial/edit-order/edit-order.js"></script>
+	<script src="partial/login/login.js"></script>
+	<script src="service/auth-service.js"></script>
+	<script src="service/data-service.js"></script>
+	<script src="service/request-interceptor-service.js"></script>
 	<!-- Add New Component JS Above -->
 
 	<div>
-		<div ng-include="'partial/sidebar/sidebar.html'"></div>
+		<div ng-if="isLoggedIn" ng-include="'partial/sidebar/sidebar.html'"></div>
 		<div id="content">
 			<div class="main-view">
 				<div ui-view></div>

@@ -19,6 +19,12 @@
 </div>
 
 <div class="col-md-4">
-	<h4>Store count: {{stores.length}}</h4>
+	<h4>Latest orders</h4>
 	<hr/>
+	<div ng-repeat="order in orders | orderBy:'-' | limitTo: 5">
+	<div class="new-button home" ui-sref="edit-order({id:order._id})">{{order._id}}</div>
+		</div>
+	<br/>
+	<strong>All orders: {{orders.length}}</strong>
+	<br/>
 </div>

@@ -1,19 +1,21 @@
-angular.module('app', ['ui.bootstrap', 'ui.router', 'ngAnimate', 'ngFileUpload']);
+angular.module('app', ['ui.bootstrap', 'ui.router', 'ngAnimate', 'ngFileUpload', 'LocalForageModule']);
 
-angular.module('app').config(function($stateProvider, $urlRouterProvider) {
+angular.module('app').constant('NET', {API_URL:'http://localhost:3333'});
+
+angular.module('app').config(function($stateProvider, $urlRouterProvider, $httpProvider) {
 
     $stateProvider.state('home', {
         url: '/home',
         templateUrl: 'partial/home/home.html',
         controller: 'HomeCtrl',
-        resolve: {
+        resolve: {	
             items: function(itemService) {
 
                 return itemService.getList();
             },
-			stores: function(storeService) {
+			orders: function(orderService) {
 
-                return storeService.getList();
+                return orderService.getList();
             }
 			
 
@@ -24,6 +26,11 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'partial/items/items.html',
         controller: 'ItemsCtrl',
         resolve: {
+			checkLogin:function(authService){
+				
+				return authService.checkLogin();
+				
+			},	
             items: function(itemService) {
 
                 return itemService.getList();
@@ -36,6 +43,11 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'partial/new-item/new-item.html',
         controller: 'NewItemCtrl',
         resolve: {
+			checkLogin:function(authService){
+				
+				return authService.checkLogin();
+				
+			},
             stores: function(storeService) {
 
                 return storeService.getList();
@@ -47,6 +59,11 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'partial/edit-item/edit-item.html',
         controller: 'EditItemCtrl',
         resolve: {
+			checkLogin:function(authService){
+				
+				return authService.checkLogin();
+				
+			},
             item: function(itemService, $stateParams) {
 
                 return itemService.getOne($stateParams.id);
@@ -65,6 +82,11 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'partial/stores/stores.html',
 		controller: 'StoresCtrl',
         resolve: {
+			checkLogin:function(authService){
+				
+				return authService.checkLogin();
+				
+			},
             stores: function(storeService) {
 
                 return storeService.getList();
@@ -74,13 +96,25 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('new-store', {
         url: '/new-store',
         templateUrl: 'partial/new-store/new-store.html',
-		controller: 'NewStoreCtrl'
+		controller: 'NewStoreCtrl',
+		resolve: {
+			checkLogin:function(authService){
+				
+				return authService.checkLogin();
+				
+			}
+        }
     });
     $stateProvider.state('edit-store', {
         url: '/edit-store/:id',
         templateUrl: 'partial/edit-store/edit-store.html',
 		controller: 'EditStoreCtrl',
 		resolve: {
+			checkLogin:function(authService){
+				
+				return authService.checkLogin();
+				
+			},
             item: function(storeService, $stateParams) {
 
                 return storeService.getOne($stateParams.id);
@@ -94,6 +128,11 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'partial/orders/orders.html',
 		controller: 'OrdersCtrl',
         resolve: {
+			checkLogin:function(authService){
+				
+				return authService.checkLogin();
+				
+			},
             orders: function(orderService) {
 
                 return orderService.getList();
@@ -105,6 +144,11 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
         templateUrl: 'partial/edit-order/edit-order.html',
 		controller: 'EditOrderCtrl',
 		resolve: {
+			checkLogin:function(authService){
+				
+				return authService.checkLogin();
+				
+			},
             item: function(orderService, $stateParams) {
 
                 return orderService.getOne($stateParams.id);
@@ -113,8 +157,15 @@ angular.module('app').config(function($stateProvider, $urlRouterProvider) {
 
         }
     });
+    $stateProvider.state('login', {
+        url: '/login',
+        templateUrl: 'partial/login/login.html',
+		controller: 'LoginCtrl'
+    });
     /* Add New States Above */
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/login');
+	
+	$httpProvider.interceptors.push('requestInterceptorService');
 
 });
 

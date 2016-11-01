@@ -12,7 +12,7 @@ module.exports = function () {
             if(!err){
                 res.send(docs);
             }else{
-                res.sendStatus(400).send(err);
+                res.status(400).send(err);
                 console.log(err);
             }
 

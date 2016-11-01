@@ -10,6 +10,9 @@ module.exports = function(){
 	require('./order/model');
     require('./order/routes')();
 	
+	require('./account/model');
+    require('./account/routes')();
+	
 	require('./site-routes')();
 
 };

@@ -1,10 +1,12 @@
-const server 		= require('../../server').server;
-const mongoose 		= require('mongoose');
-const multer  		= require('multer');
-const mime 			= require('mime');
-const crypto 		= require ("crypto");
-const randomstring 	= require("randomstring");
-var qr 				= require('qr-image');
+const server 			= require('../../server').server;
+const mongoose 			= require('mongoose');
+const multer  			= require('multer');
+const mime 				= require('mime');
+const crypto 			= require('crypto');
+const randomstring 		= require('randomstring');
+const qr 				= require('qr-image');
+const authMiddleware 	= require('../auth');
+const URL 				= require('../../config').URL;
 
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -19,10 +21,9 @@ var storage = multer.diskStorage({
 
 const upload  = multer({ storage: storage });
 
-
 module.exports = function () {
 	
-    server.post('/upload', upload.single('file'), function(req,res){
+    server.post('/api/upload', upload.single('file'), function(req,res){
 
         console.log(req.file);
         res.send(req.file);
@@ -30,7 +31,7 @@ module.exports = function () {
     });
 
 
-	server.get('/items', function (req, res) {
+	server.get('/api/items', function (req, res) {
 
 		const Item = mongoose.model('Item');
 		
@@ -48,13 +49,14 @@ module.exports = function () {
 
 	});
 
-	server.post('/item', function(req, res){
+	server.post('/api/item', function(req, res){
 
 		//generating short url
 		var random = randomstring.generate(3);
 		
 		//generating the qrcode & saving
-		var qrPath = 'http://localhost:3333/'+random;
+		var qrPath = URL+random;
+		console.log(qrPath);
 		
 		var qrPng = qr.image(qrPath, { 
 			type: 'png',
@@ -93,7 +95,7 @@ module.exports = function () {
 
 	});
 
-	server.delete('/item/:id', function(req, res){
+	server.delete('/api/item/:id', authMiddleware, function(req, res){
 
 		const itemId = req.params.id;
 		const Item = mongoose.model('Item');
@@ -111,7 +113,7 @@ module.exports = function () {
 
 	});
 
-	server.get('/item/:id', function(req, res){
+	server.get('/api/item/:id', function(req, res){
 
 			const itemId = req.params.id;
 
@@ -130,7 +132,7 @@ module.exports = function () {
 
 	});
 
-	server.put('/item/:id', function(req, res){
+	server.put('/api/item/:id', function(req, res){
 
 		const itemId = req.params.id;
 		const data = req.body;

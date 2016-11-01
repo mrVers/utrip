@@ -29,11 +29,11 @@
 
 <div class="col-md-3">
 	<label>QR code</label>
-	<img class="cover" ng-if="item.qr" ng-src="http://localhost:3333/qr/{{item.qr}}"></img>
+	<img class="cover" ng-if="item.qr" ng-src="{{url}}/qr/{{item.qr}}"></img>
 	<br/>
 	<br/>
-	<label>ShortURL</label> • <a href="http://localhost:3333/{{item.shorturl}}" target="_blank">go</a>
-	<input value="http://localhost:3333/{{item.shorturl}}" name="shorturl" type="text" class="form-control" readonly/>
+	<label>ShortURL</label> • <a href="/{{item.shorturl}}" target="_blank">go</a>
+	<input value="{{url}}/{{item.shorturl}}" name="shorturl" type="text" class="form-control" readonly/>
 </div>
 
 <div class="col-md-3">
@@ -50,6 +50,6 @@
         </div>
     </div>
 	
-	<img class="cover" ng-if="item.coverImage" ng-src="http://localhost:3333/uploads/{{item.coverImage}}"></img>
+	<img class="cover" ng-if="item.coverImage" ng-src="{{url}}/uploads/{{item.coverImage}}"></img>
 
 </div>

@@ -1,4 +1,4 @@
-angular.module('app').controller('EditItemCtrl', function ($scope, itemService, storeService, $state, Upload) {
+angular.module('app').controller('EditItemCtrl', function ($scope, itemService, storeService, $state, Upload, NET) {
 
 	$scope.item = itemService.model.item;
 	$scope.stores = storeService.model.list;
@@ -10,9 +10,10 @@ angular.module('app').controller('EditItemCtrl', function ($scope, itemService, 
 	$scope.uploadData = {
 		progress: 0
 	};
+	
+	$scope.url = NET.API_URL;
 
 	$scope.onSave = function () {
-		console.log(storeId);
 
 		$scope.submitted = true;
 
@@ -40,7 +41,7 @@ angular.module('app').controller('EditItemCtrl', function ($scope, itemService, 
 		$scope.isUploading = true;
 
 		Upload.upload({
-			url: 'http://localhost:3333/upload'
+			url: NET.API_URL + '/api/upload'
 			, data: {
 				file: file
 			}

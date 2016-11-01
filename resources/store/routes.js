@@ -3,7 +3,7 @@ const mongoose 	= require('mongoose');
 
 module.exports = function () {
 
-	server.get('/stores', function (req, res) {
+	server.get('/api/stores', function (req, res) {
 
 		const Store = mongoose.model('Store');
 
@@ -20,7 +20,7 @@ module.exports = function () {
 
 	});
 
-	server.post('/store', function(req, res){
+	server.post('/api/store', function(req, res){
 
 		const data = req.body;
 		const Store = mongoose.model('Store');
@@ -39,7 +39,7 @@ module.exports = function () {
 
 	});
 
-	server.delete('/store/:id', function(req, res){
+	server.delete('/api/store/:id', function(req, res){
 
 		const storeId = req.params.id;
 		const Store = mongoose.model('Store');
@@ -57,7 +57,7 @@ module.exports = function () {
 
 	});
 
-	server.get('/store/:id', function(req, res){
+	server.get('/api/store/:id', function(req, res){
 
 			const storeId = req.params.id;
 
@@ -76,7 +76,7 @@ module.exports = function () {
 
 	});
 
-	server.put('/store/:id', function(req, res){
+	server.put('/api/store/:id', function(req, res){
 
 		const storeId = req.params.id;
 		const data = req.body;

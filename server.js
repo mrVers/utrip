@@ -1,9 +1,11 @@
-const express 		= require('express');
-const server 		= express();
-const bodyParser 	= require('body-parser');
-const database 		= require('./database');
-const cors 			= require('cors');
-const PORT 			= require('./config').PORT;
+const express 			= require('express');
+const server 			= express();
+const bodyParser 		= require('body-parser');
+const database 			= require('./database');
+const cors 				= require('cors');
+const PORT 				= require('./config').PORT;
+const expressValidator 	= require('express-validator');
+const Promise 			= require('bluebird');
 
 exports.server = server;
 
@@ -15,6 +17,7 @@ exports.init = function () {
 		server.use(bodyParser.json());
 		server.use(bodyParser.urlencoded({extended:true}));
 		server.use(cors());
+		server.use(expressValidator());
 		
 		server.use('/uploads', express.static('uploads'));
 		server.use('/vip', express.static('vip'));

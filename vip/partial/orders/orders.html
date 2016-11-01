@@ -22,7 +22,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="fancy" ng-repeat="order in orders | orderBy:'-'">
+            <tr class="fancy" ng-repeat="order in orders | orderBy:'-' | filter:search">
                 <td class="title" ui-sref="edit-order({id:order._id})">
                     <strong>{{order._id}} </strong> <div class="btn btn-xs btn-success">New</div>
                 </td>
@@ -48,7 +48,7 @@
 
 <div class="col-md-12">
 	<div class="no-results">
-		<span ng-show="(orders).length == 0">
+		<span ng-show="(orders | filter:search).length == 0">
 			<strong>No sales present :( 
 				<br/>We shall now cross our fingers and wait for the first one!
 			</strong>

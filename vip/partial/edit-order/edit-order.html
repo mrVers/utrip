@@ -59,7 +59,7 @@
 		<div class="order-header">Ordered items</div>
 		<div ng-repeat="item in order.items" class="order-item col-md-12">
 			<div class="col-md-4">
-				<img class="cover" ng-if="item.coverImage" ng-src="http://localhost:3333/uploads/{{item.coverImage}}"></img>
+				<img class="cover" ng-if="item.coverImage" ng-src="{{url}}/uploads/{{item.coverImage}}"></img>
 
 			</div>
 			<div class="col-md-8">
