@@ -42,3 +42,9 @@ Access the Angular.js CMS via the /vip/ route.
 ```
 http://localhost:3333/vip
 ```
+
+##### Logging
+Admin account gets automaticaly seeded. For login, use:
+```
+admin@utrip.si / admin
+```

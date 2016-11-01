@@ -1,6 +1,6 @@
 angular.module('app').controller('EditOrderCtrl', function ($scope, orderService, $state, NET) {
 
-	$scope.cartTotal = 0
+	$scope.cartTotal = 0;
 	$scope.isSaving = false;
 	
 	$scope.url = NET.API_URL;

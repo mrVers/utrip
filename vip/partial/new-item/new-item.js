@@ -22,7 +22,7 @@ angular.module('app').controller('NewItemCtrl', function ($scope, itemService, s
 
 	$scope.onSave = function () {
 		
-		coverImage = $scope.item.coverImage;
+		var coverImage = $scope.item.coverImage;
 		console.log(coverImage);
 		console.log('yo!');
 		

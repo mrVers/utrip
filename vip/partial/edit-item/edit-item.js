@@ -41,7 +41,7 @@ angular.module('app').controller('EditItemCtrl', function ($scope, itemService, 
 		$scope.isUploading = true;
 
 		Upload.upload({
-			url: NET.API_URL + '/api/upload'
+			url: NET.API_URL +'/api/upload'
 			, data: {
 				file: file
 			}
