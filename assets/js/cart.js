@@ -64,7 +64,7 @@ function pushItem() {
 
 
 	$.ajax({
-		url: '/item/' + id
+		url: '/api/item/' + id
 		, success: function (item) {
 
 			$.extend(item, {
