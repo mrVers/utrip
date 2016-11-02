@@ -134,7 +134,7 @@ function doCheck(i) {
 	var qty = cartItem.quantity;
 
 	$.ajax({
-		url: '/item/' + cartItem.id
+		url: '/api/item/' + cartItem.id
 		, success: function (item) {
 
 			// check if the article in the cart is active, else erase
